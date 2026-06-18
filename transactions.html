@@ -1,62 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Wallet - Últimos Movimientos</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <style>
-    body {
-      background-color: orange;
-      color: white;
-      padding: 20px;
-    }
-
-    .container {
-      max-width: 400px;
-      margin: 0 auto;
-    }
-
-    .list-group {
-      color: grey;
-    }
-
-     .btn-primary {
-      background-color: brown;
-      border-color: brown;
-      color: white;
-    }
-    
-    .btn-primary:hover {
-      background-color: rgb(196, 20, 20);
-      border-color: rgb(196, 20, 20);
-      color: white;
-    }
-
-    .btn-secondary {
-      background-color: orangered;
-      border-color: orangered;
-      color: white;
-    }
-    
-    .btn-secondary:hover {
-      background-color: rgb(255, 106, 0);
-      border-color: rgb(255, 106, 0);
-      color: white;
-    }
-    
-  </style>
+  <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
   <div class="container">
     <h2>Últimos Movimientos</h2>
-    <ul class="list-group">
+    <ul id="transactionList" class="list-group"></ul>
+    </ul> 
+    <!-- Borrar estas transacciones hardcodeadas
+    
       <li class="list-group-item">Compra en línea - $50.00</li>
       <li class="list-group-item">Depósito - $100.00</li>
       <li class="list-group-item">Transferencia recibida - $75.00</li>
       <li class="list-group-item">Compra en línea - $5550.00</li>
       <li class="list-group-item">Depósito misma cuenta - $10500.00</li>
       <li class="list-group-item">Transferencia recibida - $7575.00</li>
-    </ul>
+    -->
+    <h3 id="currentBalance"></h3>
     <a href="menu.html" class="btn btn-secondary">Volver al Menú Principal</a>
   </div>
+  <script src="./assets/js/transactions.js"></script>
 </body>
 </html>

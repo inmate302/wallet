@@ -1,0 +1,106 @@
+    body {
+      background-color: orange;
+      color: white;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .list-group {
+      color: grey;
+    }
+
+     .btn-primary {
+      background-color: brown;
+      border-color: brown;
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background-color: rgb(196, 20, 20);
+      border-color: rgb(196, 20, 20);
+      color: white;
+    }
+
+    .btn-secondary {
+      background-color: orangered;
+      border-color: orangered;
+      color: white;
+    }
+    
+    .btn-secondary:hover {
+      background-color: rgb(255, 106, 0);
+      border-color: rgb(255, 106, 0);
+      color: white;
+    }
+ /*
+    h3 {
+      display: flex;
+      flex-direction: row;
+      justify-self: right;
+    }
+*/
+  .transaction-item {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f8f9fa;
+ 
+    color: #333;
+  }
+
+  .transfer-item .contact-alias {
+  color: red;
+  font-weight: bold;
+  text-align: right;
+  }
+
+.deposit-item .contact-alias {
+  color: green;
+  font-weight: bold;
+  }
+
+
+  .contact-header {
+    padding: 12px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    background-color: #e9ecef;
+    border-radius: 4px 4px 0 0;
+  }
+
+  .contact-header:hover {
+    background-color: #dee2e6;
+  }
+
+  .contact-alias {
+    flex-grow: 1;
+  }
+
+  .toggle-icon {
+    margin-left: 10px;
+    transition: transform 0.3s;
+  }
+
+  .contact-details {
+    padding: 12px;
+    background-color: white;
+    border-radius: 0 0 4px 4px;
+    font-size: 14px;
+  }
+
+  .contact-details p {
+    margin-bottom: 8px;
+    color: #555;
+  }
+
+  .contact-details p:last-child {
+    margin-bottom: 0;
+  }

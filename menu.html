@@ -1,57 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Wallet - Menú Principal</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <style>
-    body {
-      background-color: orange;
-      color: white;
-      padding: 20px;
-    }
-
-    .container {
-      max-width: 400px;
-      margin: 0 auto;
-    }
-     .btn-primary {
-      background-color: brown;
-      border-color: brown;
-      color: white;
-    }
-    
-    .btn-primary:hover {
-      background-color: rgb(196, 20, 20);
-      border-color: rgb(196, 20, 20);
-      color: white;
-    }
-
-    .btn-secondary {
-      background-color: orangered;
-      border-color: orangered;
-      color: white;
-    }
-    
-    .btn-secondary:hover {
-      background-color: rgb(255, 106, 0);
-      border-color: rgb(255, 106, 0);
-      color: white;
-    }
-    
-  </style>
+  <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
   <div class="container">
     <h2>Menú Principal</h2>
     <div class="form-group">
-      <label for="balance">Dinero en cuenta:</label>
-      <h3>$60000</h3>
+      <label for="balance">Saldo en cuenta:</label>
+      <h3 id="balance"></h3>
     </div>
     <p id="redirectMsg"></p>
-    <button href="deposit.html" onclick="setTimeout(() => { alert('Redirigiendo a Depositar'), location.href='deposit.html'; }, 1000)" class="btn btn-primary">Depositar</button>
-    <button href="sendmoney.html" onclick="setTimeout(() => { alert('Redirigiendo a Enviar Dinero'), location.href='sendmoney.html'; }, 1000)" class="btn btn-primary">Enviar Dinero</button>
-    <button href="transactions.html" onclick="setTimeout(() => { alert('Redirigiendo a Últimos Movimientos'), location.href='transactions.html'; }, 1000)" class="btn btn-primary">Últimos Movimientos</button>
+    <button href="deposit.html" onclick="setTimeout(() => { alert('Redirigiendo a Depositar'), location.href='deposit.html'; }, 200)" class="btn btn-primary">Depositar</button>
+    <button href="sendmoney.html" onclick="setTimeout(() => { alert('Redirigiendo a Enviar Dinero'), location.href='sendmoney.html'; }, 200)" class="btn btn-primary">Enviar Dinero</button>
+    <button href="transactions.html" onclick="setTimeout(() => { alert('Redirigiendo a Últimos Movimientos'), location.href='transactions.html'; }, 200)" class="btn btn-primary">Últimos Movimientos</button>
   </div>
-  <script src="./script.js"></script>
+  <script src="./assets/js/balance.js"></script>
 </body>
 </html>

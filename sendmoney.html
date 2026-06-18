@@ -1,97 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Wallet - Enviar Dinero</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <style>
-    body {
-      background-color: orange;
-      color: white;
-      padding: 20px;
-    }
-
-    .container {
-      max-width: 400px;
-      margin: 0 auto;
-    }
-    .list-group {
-      color: grey;
-    }
-
-    .btn-primary {
-      background-color: brown;
-      border-color: brown;
-      color: white;
-    }
-    
-    .btn-primary:hover {
-      background-color: rgb(196, 20, 20);
-      border-color: rgb(196, 20, 20);
-      color: white;
-    }
-
-    .btn-secondary {
-      background-color: orangered;
-      border-color: orangered;
-      color: white;
-    }
-    
-    .btn-secondary:hover {
-      background-color: rgb(255, 106, 0);
-      border-color: rgb(255, 106, 0);
-      color: white;
-    }
-
-    .form {
-      padding-bottom: 20px;
-    }
-
-    #contacto {
-      padding-top: 20px;
-    }
-    #save {
-      margin-bottom: 16px;
-    }
-
-    .contact-item {
-      border: 1px solid #ddd;
-      margin-bottom: 10px;
-      border-radius: 4px;
-      background: #f9f9f9;
-    }
-
-    .contact-header {
-      padding: 12px;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: #f0f0f0;
-      font-weight: bold;
-      user-select: none;
-    }
-
-    .contact-header:hover {
-      background: #e0e0e0;
-    }
-
-    .contact-details {
-      padding: 12px;
-      border-top: 1px solid #ddd;
-      background: #fff;
-    }
-
-    .contact-details p {
-      margin: 6px 0;
-      font-size: 14px;
-    }
-
-    .toggle-icon {
-      font-size: 12px;
-      transition: transform 0.2s;
-    }
-
-  </style>
+  <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
   <div class="container">
@@ -139,126 +52,12 @@
  <h3>Contactos</h3>
   <ul id="contactList" class="list-group">
   </ul>
-      <button type="submit" class="btn btn-primary">Enviar dinero</button>
     <!-- Anteriormente habían contactos hardcodeados aquí.
          Estos son creados de manera dinámica ahora con la función renderContact -->
     <a href="menu.html" class="btn btn-secondary">Volver al Menú Principal</a>
   </form>
   </div>
-  
-  <script>
-
-      window.addEventListener('DOMContentLoaded', function() {
-      const contacts = JSON.parse(localStorage.getItem("contacto")) || [];
-      document.getElementById("contactList").innerHTML = ""; // Clear list
-      contacts.forEach(contact => renderContact(contact));
-    });
-      /* crea un div con el alias del contacto que al hacerle click 
-         despliega otro div con los detalles del contacto (nombre completa, n° de cuenta, banco)
-         como también el campo para indicar el monto de transferencia y un botón.
-      */
-      function renderContact(contact) {
-        const contactDiv = document.createElement("div");
-        contactDiv.className = "contact-item";
-        contactDiv.innerHTML = `
-          <div class="contact-header" onclick="toggleContact(this)">
-            <span class="contact-alias">${contact.alias}</span>
-            <span class="toggle-icon">▼</span>
-          </div>
-          <div class="contact-details" style="display: none;">
-            <p><strong>Nombre:</strong> ${contact.nombre}</p>
-            <p><strong>Cuenta:</strong> ${contact.ctacte}</p>
-            <p><strong>Banco:</strong> ${contact.banco}</p>
-            
-            <hr style="margin: 12px 0;">
-            
-            <div class="transfer-form">
-              <label for="transferAmount_${contact.alias}">¿Cuánto deseas transferir?</label>
-              <div style="display: flex; gap: 8px; margin-top: 8px;">
-                <input 
-                  type="number" 
-                  id="transferAmount_${contact.alias}" 
-                  class="form-control" 
-                  placeholder="Monto"
-                  min="0"
-                  step="0.01"
-                  style="flex: 1;"
-                >
-                <button 
-                  class="btn btn-primary" 
-                  onclick="sendMoney('${contact.alias}', document.getElementById('transferAmount_${contact.alias}').value)"
-                >
-                  Enviar dinero
-                </button>
-              </div>
-            </div>
-          </div>
-        `;
-        
-        document.getElementById("contactList").appendChild(contactDiv);
-      }
-
-
-    function toggleContact(header) {
-      const details = header.nextElementSibling;
-      const icon = header.querySelector(".toggle-icon");
-      
-      if (details.style.display === "none") {
-        details.style.display = "block";
-        icon.textContent = "▲";
-      } else {
-        details.style.display = "none";
-        icon.textContent = "▼";
-      }
-    }
-    // Creamos un objeto JSON con los campos de contacto y lo guardamos usando localStorage
-    function saveContact(){
-      const contact = {
-        nombre: document.getElementById("fullName").value,
-        ctacte: document.getElementById("account").value,
-        alias: document.getElementById("alias").value,
-        banco: document.getElementById("bankName").value
-      };
-      
-      // Validación de campos
-      if (!contact.nombre || !contact.ctacte || !contact.alias || !contact.banco) {
-        alert("Por favor, completa todos los campos");
-        return;
-      }
-      // Validación de nombre completo
-      if (contact.nombre.trim().split(/\s+/).length < 2) {
-        alert("Debes escribir al menos un nombre y un apellido");
-        return;
-      }
-      //validación de cta cte
-      if (!/^\d+$/.test(contact.ctacte)) {
-        alert("Debes ingresar un número de cuenta corriente");
-        return;
-      }
-
-      if (contact.ctacte.length > 11) {
-        alert("Debes ingresar una secuencia númerica no mayor a 11 números");
-        return;
-      }
-
-      // Obtener contactos o inicializar lista vacía
-      let contacts = JSON.parse(localStorage.getItem("contacto")) || [];
-      
-      // Agregar nuevo contacto
-      contacts.push(contact);
-      
-      // Guardar localStorage
-      localStorage.setItem("contacto", JSON.stringify(contacts));
-
-      renderContact(contact);
-      
-      // Borrar campos de formulario
-      document.getElementById("fullName").value = "";
-      document.getElementById("account").value = "";
-      document.getElementById("alias").value = "";
-      document.getElementById("bankName").value = "";
-      }
-
-  </script>
+  <script src="./assets/js/sendmoney.js"></script>
+  <script src="./assets/js/balance.js"></script>
 </body>
 </html>
