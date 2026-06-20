@@ -1,13 +1,80 @@
-  
+
+      let contactsGlobal = [];
+
       window.addEventListener('DOMContentLoaded', function() {
-      const contacts = JSON.parse(localStorage.getItem("contacto")) || [];
-      document.getElementById("contactList").innerHTML = ""; // Clear list
-      contacts.forEach(contact => renderContact(contact));
-    });
+        contactsGlobal = JSON.parse(localStorage.getItem("contacto")) || [];
+        document.getElementById("contactList").innerHTML = ""; // Limpiar lista
+        contactsGlobal.forEach(contact => renderContact(contact));
+        initializeAutocomplete();
+      });
+
+      // Inicializar autocomplete
+      function initializeAutocomplete() {
+        $("#searchContact").autocomplete({
+          source: function(request, response) {
+            // Filtrar contactos basado en input del usuario
+            const filtered = contactsGlobal.filter(contact =>
+              contact.alias.toLowerCase().includes(request.term.toLowerCase()) ||
+              contact.nombre.toLowerCase().includes(request.term.toLowerCase())
+            );
+            
+            // Regresar sugerencias formateadas
+            response(filtered.map(contact => ({
+              label: `${contact.alias} (${contact.nombre})`,
+              value: contact.alias
+            })));
+          },
+          minLength: 2,
+          select: function(event, ui) {
+            // Cuando el usuario selecciona una sugerencia usar como input y filtrar
+            document.getElementById("searchContact").value = ui.item.value;
+            filterContacts(ui.item.value);
+            return false;
+          }
+        });
+        
+        $("#searchContact").on("input", function() {
+          const searchTerm = $(this).val();
+          filterContacts(searchTerm);
+        });
+      }
+
+      // Filtrar y mostrar u ocultar basado en el término de búsqueda
+      function filterContacts(searchTerm) {
+        const contactElements = document.querySelectorAll('.contact-item');
+        
+        if (searchTerm.length < 2) {
+          // Si es menos de 2 carácteres mostrar todos los contactos
+          contactElements.forEach(el => {
+            el.style.display = "block";
+          });
+          return;
+        }
+        
+        const lowerSearchTerm = searchTerm.toLowerCase();
+        
+        contactElements.forEach(el => {
+          const aliasSpan = el.querySelector('.contact-alias');
+          const alias = aliasSpan.textContent.toLowerCase();
+          
+          // Obtener el nombre de los detalles de contacto
+          const nombreParagraph = el.querySelector('.contact-details p');
+          const nombre = nombreParagraph ? nombreParagraph.textContent.toLowerCase() : "";
+          
+          // Mostrar contacto si calza con nombre o alias
+          if (alias.includes(lowerSearchTerm) || nombre.includes(lowerSearchTerm)) {
+            el.style.display = "block";
+          } else {
+            el.style.display = "none";
+          }
+        });
+      }
+      
       /* crea un div con el alias del contacto que al hacerle click 
          despliega otro div con los detalles del contacto (nombre completa, n° de cuenta, banco)
          como también el campo para indicar el monto de transferencia y un botón.
       */
+      
       function renderContact(contact) {
         const contactDiv = document.createElement("div");
         contactDiv.className = "contact-item";
@@ -48,7 +115,7 @@
         document.getElementById("contactList").appendChild(contactDiv);
       }
 
-
+    // Expandir contacto para mostrar detalles    
     function toggleContact(header) {
       const details = header.nextElementSibling;
       const icon = header.querySelector(".toggle-icon");
@@ -61,6 +128,7 @@
         icon.style.transform = "rotate(0deg)";
       }
     }
+
     // Creamos un objeto JSON con los campos de contacto y lo guardamos usando localStorage
     function saveContact(){
       const contact = {
@@ -80,7 +148,7 @@
         alert("Debes escribir al menos un nombre y un apellido");
         return;
       }
-      //validación de cta cte
+      // Validación de cuenta corriente
       if (!/^\d+$/.test(contact.ctacte)) {
         alert("Debes ingresar un número de cuenta corriente");
         return;
@@ -96,11 +164,22 @@
       
       // Agregar nuevo contacto
       contacts.push(contact);
-      
+
       // Guardar localStorage
       localStorage.setItem("contacto", JSON.stringify(contacts));
 
+      // Actualizar arreglo de contactos de manera global
+      contactsGlobal = contacts;
+      
       renderContact(contact);
+      
+      // Refrescar autocomplete con nuevos datos
+      $("#searchContact").autocomplete("destroy");
+      initializeAutocomplete();
+      
+      // Borrar campo de búsqueda
+      document.getElementById("searchContact").value = "";
+      filterContacts("");
       
       // Borrar campos de formulario
       document.getElementById("fullName").value = "";
