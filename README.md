@@ -2,7 +2,7 @@
 
 Project for Frontend development learning part of Talento Digital's JAVA Fullstack development curriculum.
 
-## OK, But really, What is Alke-Wallet ##
+## OK, But really, What is Alke-Wallet? ##
 
 Alke wallet is a functional digital wallet. The project encapsulates the use of DOM manipulation, cascading style sheets
 and Javascript in order to present a functional and responsive product.
