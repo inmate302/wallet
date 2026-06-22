@@ -1,5 +1,5 @@
-[![en]🇬🇧](https://github.com/inmate302/wallet/blob/master/README.md)
-[![es]🇪🇸](https://github.com/inmate302/wallet/blob/master/README.es.md)
+[🇬🇧](https://github.com/inmate302/wallet/blob/main/README.md)
+[🇪🇸](https://github.com/inmate302/wallet/blob/main/README.es.md)
 
 <img width="333" height="120" alt="alke-wallet-logo" src="https://github.com/user-attachments/assets/fedba762-db65-4913-85fa-fa4845488b24" />
 
