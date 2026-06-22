@@ -1,4 +1,4 @@
-<img width="333" height="120" alt="alke-wallet-logo" src="https://github.com/user-attachments/assets/17df31c0-accd-4c3e-9c7d-ea24561160df" />
+<img width="333" height="120" alt="alke-wallet-logo" src="https://github.com/user-attachments/assets/fedba762-db65-4913-85fa-fa4845488b24" />
 
 Project for Frontend development learning part of Talento Digital's JAVA Fullstack development curriculum.
 
