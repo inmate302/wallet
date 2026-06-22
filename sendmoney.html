@@ -46,7 +46,7 @@
           </datalist>
         </div>
       </div>  
-      <button onclick="saveContact()" id="save" class="btn btn-primary" type="button" hidden>Guardar contacto</button>
+      <button onclick="saveContact(), getElementById('contacto').setAttribute('hidden', 'true'), getElementById('save').setAttribute('hidden', 'true')" id="save" class="btn btn-primary" type="button" hidden>Guardar contacto</button>
       <!-- A su vez los elementos input del formulario al ser modificados (onchange) 
            remueven el atributo hidden del botón "guardar contacto" el cuál realiza las validaciones necesarias-->
  <h3>Contactos</h3>
