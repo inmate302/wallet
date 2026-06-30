@@ -1,6 +1,6 @@
 # Alke Wallet — Consultas SQL y Resultados
 
-A través del presente se mostrarán las consultas SQL y Resultados para el proyecto.
+A través del presente se mostrarán las consultas SQL y sus resultados para el proyecto.
 Hemos decidido ir con el motor de base de datos MariaDB y para mostrar los resultados
 estaremos conectando a la base de datos a través de Dbeaver.
 Para mayores detalles consulte archivo 'alkewallet.sql' y sus comentarios.
