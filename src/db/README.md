@@ -13,8 +13,10 @@ CREATE DATABASE IF NOT EXISTS alkewallet
 USE alkewallet;
 ```
 
-<-----
+![](https://github.com/user-attachments/assets/32b55839-41fd-4df7-a4e5-f761aa9805c4)
 
+*Mostrar Base de Datos*
+  
 ## 2. Definición de tablas (DDL)
 
 ```sql
@@ -48,8 +50,16 @@ CREATE TABLE transaccion (
  );
 
 ```
+![](https://github.com/user-attachments/assets/484328f8-fbd0-4813-acc6-3d743277d558)
 
-<-----
+*Mostrar Tablas*
+
+
+![](https://github.com/user-attachments/assets/eb2770bb-92ce-467a-8987-31313fe27c21)
+
+
+*Describe Usuario*
+
 
 ## 3. Datos de prueba (INSERT)
 
@@ -89,8 +99,23 @@ INSERT INTO transaccion (sender_user_id, receiver_user_id, importe, currency_tx_
   (6, 9, 1.00, 1, STR_TO_DATE('04.06.2026/14:45:05','%d.%m.%Y/%H:%i:%s')),
   (9, 6, 0.58, 4, STR_TO_DATE('04.06.2026/14:45:52','%d.%m.%Y/%H:%i:%s'));
 ```
+![](https://github.com/user-attachments/assets/f430b327-c58f-4132-b979-d28e056faf9f)
 
-<-----
+*Tabla Moneda*
+
+
+
+![](https://github.com/user-attachments/assets/38d39035-7904-4b42-88f6-7654c0b87de3)
+
+*Tabla Usuario*
+
+
+
+![](https://github.com/user-attachments/assets/1a722221-9623-47ac-a0e4-5bf31156c07c)
+
+*Tabla Transaccion*
+
+
 
 ## 4. Consultas obligatorias
 
@@ -104,7 +129,16 @@ JOIN moneda m ON u.currency_id = m.currency_id
 WHERE u.user_id = 1;
 ```
 
-<-----
+![](https://github.com/user-attachments/assets/7f6b562b-135d-4120-a4b1-93bd08910799)
+
+*Moneda preferida por usuario 1*
+
+
+![](https://github.com/user-attachments/assets/b053a07b-dd30-42bd-b29c-fe099e14c68e)
+
+*Moneda preferida por usuario 5*
+
+
 
 ### 4.2 Todas las transacciones registradas
 
@@ -112,7 +146,9 @@ WHERE u.user_id = 1;
 SELECT * FROM transaccion t;
 ```
 
-<-----
+![](https://github.com/user-attachments/assets/1a722221-9623-47ac-a0e4-5bf31156c07c)
+
+*Mostrar todas las transsacciones*
 
 ### 4.3 Transacciones de un usuario específico (ordenadas por fecha de transacción)
 
@@ -122,8 +158,15 @@ FROM transaccion t
 WHERE t.sender_user_id = 2 OR t.receiver_user_id = 2
 ORDER BY t.transaction_date DESC;
 ```
+![](https://github.com/user-attachments/assets/cb4fe2b9-abef-4f38-8f48-f8dd2e1aee78)
 
-<-----
+*Transacciones Usuario 1*
+
+
+![](https://github.com/user-attachments/assets/63343649-01c9-47d7-991e-4420c0f3b634)
+
+
+*Transacciones Usuario 2*
 
 ### 4.4 Modificar el correo de un usuario (UPDATE)
 
@@ -133,7 +176,10 @@ SET email = 'elsapo@alke.cl'
 WHERE user_id = 1;
 ```
 
-<-----
+![](https://github.com/user-attachments/assets/aa86e799-f6e2-4c96-946e-0644265412c9)
+
+*Update email*
+
 
 ### 4.5 Eliminar una transacción (DELETE)
 
@@ -142,7 +188,9 @@ DELETE FROM transaccion
 WHERE transaction_id = 1;
 ```
 
-<-----
+![](https://github.com/user-attachments/assets/fd1b9780-2c8b-4f41-9cb7-dc84996a18f3)
+
+*Delete trasaccion*
 
 ## 5. Tareas Plus - Vista top-5 de usuarios por saldo
 
@@ -153,6 +201,13 @@ FROM usuario
 ORDER BY saldo DESC
 LIMIT 5;
 ```
-
+```sql
 SELECT * FROM top5_saldo;
+```
+
+![](https://github.com/user-attachments/assets/ee32205d-37eb-4f62-ac22-4a6237a701e9)
+
+*View top 5 saldo*
+
+
 
