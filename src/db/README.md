@@ -190,7 +190,7 @@ WHERE transaction_id = 1;
 
 ![](https://github.com/user-attachments/assets/fd1b9780-2c8b-4f41-9cb7-dc84996a18f3)
 
-*Delete trasaccion*
+*Delete transaccion*
 
 ## 5. Tareas Plus - Vista top-5 de usuarios por saldo
 
